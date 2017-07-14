@@ -6,7 +6,7 @@ RSpec.feature 'User visits category show page' do
     job1, job2 = category.jobs
 
     visit category_path(category)
-    save_and_open_page
+    
     expect(page).to have_content category.title
     expect(page).to have_content job1.title
     expect(page).to have_content job2.title
