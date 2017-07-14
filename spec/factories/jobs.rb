@@ -13,7 +13,8 @@ FactoryGirl.define do
     sequence :city do |n|
       "City #{(64 + n).chr}"
     end
-    
+
     company
+    category
   end
 end

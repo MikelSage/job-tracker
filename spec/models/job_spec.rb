@@ -6,5 +6,6 @@ RSpec.describe Job, type: :model do
     it {is_expected.to validate_presence_of(:level_of_interest)}
     it {is_expected.to validate_presence_of(:city)}
     it {is_expected.to belong_to(:company)}
+    it {is_expected.to belong_to(:category)}
   end
 end
