@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :company do
     sequence :name do |n|
-    "#{(64 + n).chr} Company"
+    "Company #{n}"
     end
 
     trait :with_jobs do

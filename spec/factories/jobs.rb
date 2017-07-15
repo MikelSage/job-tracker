@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :job do
     sequence :title do |n|
-      "#{(64 + n).chr} Job"
+      "Job #{n}"
     end
 
     description "The best job ever"

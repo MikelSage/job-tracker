@@ -1,3 +1,4 @@
+<%# byebug %>
 <h1>Title: <%= @job.title %></h1>
 
 <p>Description: <%= @job.description %></p>
@@ -9,6 +10,9 @@
 <p>Category: <%= @job.category.title %></p>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
+
+<%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
+<%= render partial: 'comments/form' %>
 
 <%= link_to 'Edit Job', edit_company_job_path(@job.company, @job)%>
 <%= link_to 'Delete',  company_job_path(@job.company, @job), method: :delete%>
