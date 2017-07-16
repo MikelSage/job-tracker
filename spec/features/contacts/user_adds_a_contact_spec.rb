@@ -2,15 +2,17 @@ require 'rails_helper'
 
 RSpec.feature 'User adds a contact to a company' do
   scenario 'add sees the new contact on the page' do
-    company = create(:company, name: 'Cartoon Network')
+    company = create(:company, :with_jobs, job_count: 3,  name: 'Cartoon Network')
     name = 'Aku'
     position = 'Shapeshifting Master of Darkness'
     email = 'extra_thicc_3011@akumail.com'
 
     visit company_path(company)
+
     fill_in 'contact[full_name]', with: name
     fill_in 'contact[position]', with: position
     fill_in 'contact[email]', with: email
+    click_on 'Submit'
 
     expect(page).to have_content name
     expect(page).to have_content position
