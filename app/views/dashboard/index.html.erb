@@ -1,0 +1,15 @@
+<h1>Welcome to the Dashboard</h1>
+
+<table>
+  <caption>Jobs by Level of Interest</caption>
+  <tr>
+    <th>Level of Interest</th>
+    <th>Number of Jobs</th>
+  </tr>
+  <% @interest_count.each do |level, count| %>
+    <tr class="<%= "level_of_interest_#{level}" %>">
+      <td><%= level %></td>
+      <td><%= count %></td>
+    </tr>
+  <% end %>
+</table>
