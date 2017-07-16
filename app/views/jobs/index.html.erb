@@ -3,6 +3,3 @@ All Jobs for <strong><%= @company.name %></strong>
 <% @jobs.each do |job| %>
   <ul><%=link_to job.title, job_path(job) %> at <%= job.company.name %></ul>
 <% end %>
-
-<%= render partial: 'companies/contact', collection: @company.contacts %>
-<%= render partial: 'contacts/form' %>
