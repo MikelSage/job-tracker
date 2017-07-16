@@ -40,5 +40,22 @@ RSpec.describe Job, type: :model do
         expect(result[10]).to eq 1
       end
     end
+
+    describe '.top_companies' do
+      it "returns the top 3 companies by average level of interest" do
+        companies = create_list(:company, 4, :with_jobs)
+
+        total_interest = companies.last.jobs.reduce(0) do |num, job|
+          num += job.level_of_interest
+        end
+
+        average = total_interest/companies.last.jobs.count
+
+        result = Job.top_companies
+
+        expect(result[0][0]).to eq(companies.last.name)
+        expect(result[0][1]).to eq(average)
+      end
+    end
   end
 end

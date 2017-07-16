@@ -11,7 +11,7 @@ FactoryGirl.define do
     end
 
     sequence :city do |n|
-      "City #{(64 + n).chr}"
+      "City #{n}"
     end
 
     company

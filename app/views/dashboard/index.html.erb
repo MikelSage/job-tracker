@@ -13,3 +13,17 @@
     </tr>
   <% end %>
 </table>
+
+<table>
+  <caption>Top 3 Companies by Level of Interest</caption>
+  <tr>
+    <th>Company Name</th>
+    <th>Average Interest</th>
+  </tr>
+  <% @top_companies.each do |data| %>
+    <tr>
+      <td><%= "#{data[0]}:" %></td>
+      <td><%= data[1] %></td>
+    </tr>
+  <% end %>
+</table>

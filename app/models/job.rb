@@ -16,4 +16,10 @@ class Job < ApplicationRecord
   def self.count_by_interest
     Job.order('level_of_interest desc').group(:level_of_interest).count
   end
+
+  def self.top_companies
+    Job.joins(:company).group(:name).
+    order("average_level_of_interest desc").
+    average(:level_of_interest).take(3)
+  end
 end
