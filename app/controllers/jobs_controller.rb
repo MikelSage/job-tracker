@@ -1,6 +1,10 @@
 class JobsController < ApplicationController
   def index
-    
+    if params[:sort] == 'location'
+      @sorted_jobs = Job.sort_by_location
+    else
+      @job = Job.all
+    end
   end
 
   def new

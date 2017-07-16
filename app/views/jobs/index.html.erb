@@ -1,5 +1,10 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h1>All Jobs Sorted By <%= params[:sort].capitalize %></h1>
 
-<% @jobs.each do |job| %>
-  <ul><%=link_to job.title, job_path(job) %> at <%= job.company.name %></ul>
+<% @sorted_jobs.each do |key, jobs| %>
+  <h3><%= "#{key}:" %></h3>
+  <ul>
+    <% jobs.each do |job| %>
+      <li><%= job.title %></li>
+    <% end %>
+  </ul>
 <% end %>
