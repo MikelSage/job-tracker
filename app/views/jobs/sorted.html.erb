@@ -6,6 +6,8 @@
     <% jobs.each do |job| %>
       <li>
         <%= link_to job.title, job_path(job)%>
+        <br>
+        <%= link_to job.company.name, company_path(job.company) %>
         <p><%= job.city %></p>
       </li>
     <% end %>
