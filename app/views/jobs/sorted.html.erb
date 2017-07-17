@@ -1,0 +1,10 @@
+<h1>All Jobs Sorted By <%= params[:sort].capitalize %></h1>
+
+<% @sorted_jobs.each do |key, jobs| %>
+  <h3><%= "#{key}:" %></h3>
+  <ul>
+    <% jobs.each do |job| %>
+      <li><%= link_to job.title, job_path(job)%></li>
+    <% end %>
+  </ul>
+<% end %>

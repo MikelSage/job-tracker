@@ -22,4 +22,8 @@ class Job < ApplicationRecord
     order("average_level_of_interest desc").
     average(:level_of_interest).take(3)
   end
+
+  def self.count_by_location
+    Job.group(:city).order('count_city desc').count(:city)
+  end
 end

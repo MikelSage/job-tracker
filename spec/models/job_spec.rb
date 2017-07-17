@@ -57,5 +57,22 @@ RSpec.describe Job, type: :model do
         expect(result[0][1]).to eq(average)
       end
     end
+
+    describe '.count_by_location' do
+      it "returns the count by location" do
+        create(:job, city: 'Denver')
+        create(:job, city: 'Denver')
+        create(:job, city: 'New York')
+        create(:job, city: 'New York')
+        create(:job, city: 'Denver')
+        create(:job, city: 'Seattle')
+
+        result = Job.count_by_location
+
+        expect(result['Denver']).to eq(3)
+        expect(result['New York']).to eq(2)
+        expect(result['Seattle']).to eq(1)
+      end
+    end
   end
 end

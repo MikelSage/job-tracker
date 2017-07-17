@@ -32,4 +32,19 @@ RSpec.feature "User visits the dashboard" do
     expect(page).to_not have_content "#{companies.first.name}: "
     expect(companies.last.name).to appear_before(companies[1].name)
   end
+
+  scenario 'and they see a count of jobs by location' do
+    create(:job, city: 'Denver')
+    create(:job, city: 'Denver')
+    create(:job, city: 'New York')
+    create(:job, city: 'New York')
+    create(:job, city: 'Denver')
+    create(:job, city: 'Seattle')
+
+    visit '/dashboard'
+    save_and_open_page
+
+    expect(page).to have_link('Denver', href: '/jobs/?location=Denver')
+    expect(page).to have_content(3)
+  end
 end

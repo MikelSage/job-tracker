@@ -27,3 +27,17 @@
     </tr>
   <% end %>
 </table>
+
+<table>
+  <caption>Jobs by Location</caption>
+  <tr>
+    <th>Location</th>
+    <th>Number of Jobs</th>
+  </tr>
+  <% @location_count.each do |city, count| %>
+    <tr>
+      <td><%= link_to city, "/jobs/?location=#{city}"%></td>
+      <td><%= count %></td>
+    </tr>
+  <% end %>
+</table>
