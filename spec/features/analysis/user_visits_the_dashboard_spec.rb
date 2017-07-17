@@ -42,7 +42,6 @@ RSpec.feature "User visits the dashboard" do
     create(:job, city: 'Seattle')
 
     visit '/dashboard'
-    save_and_open_page
 
     expect(page).to have_link('Denver', href: '/jobs/?location=Denver')
     expect(page).to have_content(3)

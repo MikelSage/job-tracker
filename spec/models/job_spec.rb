@@ -74,5 +74,19 @@ RSpec.describe Job, type: :model do
         expect(result['Seattle']).to eq(1)
       end
     end
+
+    describe '.filter_by_location' do
+      it "returns all jobs in one location" do
+        job1, job2, job3 = create_list(:job, 3, city: 'Denver')
+        job4 = create(:job, city: 'Chicago')
+
+        result = Job.filter_by_location('Denver')
+
+        expect(result).to include(job1)
+        expect(result).to include(job2)
+        expect(result).to include(job3)
+        expect(result).to_not include(job4)
+      end
+    end
   end
 end

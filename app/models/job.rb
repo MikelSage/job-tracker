@@ -26,4 +26,8 @@ class Job < ApplicationRecord
   def self.count_by_location
     Job.group(:city).order('count_city desc').count(:city)
   end
+
+  def self.filter_by_location(location)
+    Job.where(city: location)
+  end
 end
