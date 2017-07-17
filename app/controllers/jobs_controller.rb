@@ -3,6 +3,9 @@ class JobsController < ApplicationController
     if params[:sort] == 'location'
       @sorted_jobs = Job.sort_by_location
       render :sorted
+    elsif params[:sort] == 'interest'
+      @sorted_jobs = Job.sort_by_interest
+      render :sorted
     elsif params[:location]
       @jobs = Job.filter_by_location(params[:location])
       render :filtered

@@ -4,7 +4,10 @@
   <h3><%= "#{key}:" %></h3>
   <ul>
     <% jobs.each do |job| %>
-      <li><%= link_to job.title, job_path(job)%></li>
+      <li>
+        <%= link_to job.title, job_path(job)%>
+        <p><%= job.city %></p>
+      </li>
     <% end %>
   </ul>
 <% end %>

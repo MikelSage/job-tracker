@@ -30,4 +30,13 @@ class Job < ApplicationRecord
   def self.filter_by_location(location)
     Job.where(city: location)
   end
+
+  def self.sort_by_interest
+    levels = Job.pluck(:level_of_interest).uniq
+
+    jobs_by_city = levels.reduce({}) do |jobs, level|
+      jobs[level] = Job.where(level_of_interest: level)
+      jobs
+    end
+  end
 end

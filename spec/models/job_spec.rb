@@ -88,5 +88,18 @@ RSpec.describe Job, type: :model do
         expect(result).to_not include(job4)
       end
     end
+
+    describe '.sort_by_interest' do
+      it "returns jobs sorted by interest" do
+        company = create(:company, :with_jobs)
+        job = company.jobs.first
+        create_list(:job, 2, level_of_interest: job.level_of_interest)
+
+        result = Job.sort_by_interest
+
+        expect(result[job.level_of_interest].count).to eq (3)
+        expect(result[job.level_of_interest].first).to be_an_instance_of(Job)
+      end
+    end
   end
 end

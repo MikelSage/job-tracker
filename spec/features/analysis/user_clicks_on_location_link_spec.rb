@@ -12,7 +12,6 @@ RSpec.feature 'User clicks on a location link' do
     visit '/dashboard'
 
     click_on 'Denver'
-    save_and_open_page
 
     expect(page).to have_content 'Poop Scoop'
     expect(page).to have_content 'Senior Poop Scoop'
